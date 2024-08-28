@@ -1,0 +1,28 @@
+version: "1"
+
+package:
+  id: io.github.XV11-LIDAR-Visualizer
+  name: XV11-LIDAR-Visualizer
+  version: 0.0.0.1
+  kind: app
+  description: |
+    visualizing the Lidar points data
+
+command:
+  - /opt/apps/io.github.XV11-LIDAR-Visualizer/files/bin/XV11_LIDAR_Visualizer
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/malichao/XV11-LIDAR-Visualizer.git
+    version: master
+    commit: f511a32126b3eaaee8325de2815aea337f3fa228
+
+build: |
+  cd /project/linglong/sources/XV11-LIDAR-Visualizer.git
+  git apply ../../../0001-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install

@@ -1,0 +1,62 @@
+From eb1204cf3009a03b99659dad735e6630647c951d Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Thu, 15 Aug 2024 14:41:33 +0800
+Subject: [PATCH] install
+
+---
+ XV11_LIDAR_Visualizer.desktop | 11 +++++++++++
+ XV11_LIDAR_Visualizer.pro     |  8 ++++++++
+ mainwindow.cpp                |  2 +-
+ 3 files changed, 20 insertions(+), 1 deletion(-)
+ create mode 100644 XV11_LIDAR_Visualizer.desktop
+
+diff --git a/XV11_LIDAR_Visualizer.desktop b/XV11_LIDAR_Visualizer.desktop
+new file mode 100644
+index 0000000..3a164e1
+--- /dev/null
++++ b/XV11_LIDAR_Visualizer.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=XV11_LIDAR_Visualizer
++Name=XV11_LIDAR_Visualizer
++Name[zh_CN]=XV11_LIDAR_Visualizer
++Icon=connect
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=XV11_LIDAR_Visualizer
++Version=1.0
+diff --git a/XV11_LIDAR_Visualizer.pro b/XV11_LIDAR_Visualizer.pro
+index 7d07641..91edc51 100644
+--- a/XV11_LIDAR_Visualizer.pro
++++ b/XV11_LIDAR_Visualizer.pro
+@@ -26,3 +26,11 @@ FORMS += \
+ 
+ RESOURCES += \
+     terminal.qrc
++
++target.path = $$PREFIX/bin
++desktop.files = XV11_LIDAR_Visualizer.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = images/connect.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index ad8a200..9423484 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -70,7 +70,7 @@
+ 
+ #include <QMessageBox>
+ #include <QtSerialPort/QSerialPort>
+-#include <QString.h>
++#include <QString>
+ 
+ //! [0]
+ MainWindow::MainWindow(QWidget *parent) :
+-- 
+2.43.4
+
